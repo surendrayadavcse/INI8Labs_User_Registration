@@ -32,3 +32,9 @@ This is a simple user registration system implemented using React for the fronte
 - PUT /users/:id: Update user information by ID.
 - Request Body: { "name": "string", "email": "string", "dob": "date" }
 - DELETE /users/:id: Delete a user by ID.
+
+# nousers registeredpage
+![alt text](outputsnapshots/nousersregistredpage.png)
+
+# users registeredpage
+![alt text](outputsnapshots/registeredusers.png)
