@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import 'bootstrap/dist/css/bootstrap.css';
+import Button from 'react-bootstrap/Button';
+
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -41,7 +44,7 @@ function App() {
         setDob('');
         setMessage('User added successfully');
         setTimeout(() => {
-          setMessage("")
+          setMessage("");
         }, 2000);
       }
     } catch (error) {
@@ -59,9 +62,8 @@ function App() {
         fetchUsers();
         setMessage('User deleted successfully');
         setTimeout(() => {
-          setMessage("")
+          setMessage("");
         }, 2000);
-        
       }
     } catch (error) {
       console.error('Error deleting user:', error);
@@ -84,7 +86,6 @@ function App() {
         setTimeout(() => {
           setMessage('');
         }, 2000);
-       
         setNewName('');
         setNewEmail('');
         setNewDob('');
@@ -97,43 +98,51 @@ function App() {
 
   return (
     <div className="form-container">
-      <h1>User Registration</h1>
-      
-      
+      <h1 className='top-head'>User Registration</h1>
       <form onSubmit={addUser} className='form-css'>
-      <h2>Add New User</h2>
-        <label >Name</label>
-        <input type="text"  value={name} onChange={(e) => setName(e.target.value)} required />
-        <label>Email</label>
-        <input type="email"  value={email} onChange={(e) => setEmail(e.target.value)} required />
-        <label>Date of Birth</label>
-
-        <input className='datecss'  type="date" placeholder='Enter Date' value={dob} onChange={(e) => setDob(e.target.value)} required />
-        <button type="submit">Add User</button>
+        
+        <label className='headings'>Name:</label>
+        <input className='inp' type="text" value={name} onChange={(e) => setName(e.target.value)} required />
+        <label className='headings'>Email:</label>
+        <input className='inp' type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+        <label className='headings'>Date of Birth:</label>
+        <input className='datecss' type="date" placeholder='Enter Date' value={dob} onChange={(e) => setDob(e.target.value)} required />
+        <Button variant="primary" type="submit">Add User</Button>
         {message && <p>{message}</p>}
       </form>
-      {users.length > 0 && (
-        <div className="user-list">
-          <h3>Registered Users</h3>
+      {users.length > 0 ? (
+        
+        <div>
+        <h3 className='reg'>Registered Users</h3> 
+       
+        <div className="user-grid">
           {users.map(user => (
             <div key={user._id} className="user">
-              <p>ID: {user._id}</p>
-              <p>Name: {user.name}</p>
-              <p>Email: {user.email}</p>
-              <p>Date of Birth: {user.dob}</p>
-              
-              <div className='update-css'>
-                <input className='inp' type="text" placeholder="New Name" value={newName} onChange={(e) => setNewName(e.target.value)} />
-                <input className='inp' type="email" placeholder="New Email" value={newEmail} onChange={(e) => setNewEmail(e.target.value)} />
-                <input className='inp' type="date" value={newDob} onChange={(e) => setNewDob(e.target.value)} />
-                <button onClick={() => updateUser(user._id)}>Update</button>
-                <button onClick={() => deleteUser(user._id)}>Delete</button>
+              <div className='added'>
+                <div>
+                  <p>ID: {user._id}</p>
+                  <p>Name: {user.name}</p>
+                  <p>Email: {user.email}</p>
+                  <p>Date of Birth: {user.dob}</p>
+                </div>
+                <div className='update-css'>
+                  <input className='inp' type="text" placeholder="New Name" value={newName} onChange={(e) => setNewName(e.target.value)} />
+                  <input className='inp' type="email" placeholder="New Email" value={newEmail} onChange={(e) => setNewEmail(e.target.value)} />
+                  <input className='inp' type="date" value={newDob} onChange={(e) => setNewDob(e.target.value)} />
+                  <Button variant="primary" onClick={() => updateUser(user._id)}>Update</Button>
+                  <Button variant="danger" onClick={() => deleteUser(user._id)}>Delete</Button>
+                </div>
               </div>
             </div>
+            
           ))}
         </div>
+        </div>
+      ) : (
+        <h3 className='notreg'>No registered users</h3>
       )}
     </div>
+    
   );
 }
 

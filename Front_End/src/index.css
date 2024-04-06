@@ -1,5 +1,8 @@
+*{
+  font-family: 'Times New Roman', Times, serif;
+}
 .form-container{
-  background-color: blueviolet;
+  background-color: rgb(19, 4, 33);
   height: auto;
   width: 100%;
   color: white;
@@ -24,5 +27,79 @@
   align-items: flex-start;
 }
 .datecss{
-  width: 170px;
+  width: 185px;
+  height: 30px;
+}
+.added{
+  background-color:rgb(206, 217, 216);
+  display: flex;
+  flex-direction: column;
+  color: black;
+  padding: 10px;
+
+}
+
+.user-grid {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 10px;
+  row-gap: 15px;
+
+}
+
+.user {
+  width: 32%; /* Adjust as needed */
+  
+  padding: 5px;
+  border: 1px solid #231e1ec2;
+  background-color: rgb(76, 76, 84);
+  border-radius: 5px;
+  
+  
+}
+
+.added {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 10px;
+}
+
+.update-css {
+  display: flex;
+  flex-direction: column;
+}
+
+.inp {
+  margin-bottom: 5px;
+}
+
+button {
+  margin-top: 5px;
+}
+*{
+  box-sizing: border-box;
+}
+.headings{
+  font-weight: bold;
+  font-size: 20px;
+ 
+}
+.top-head{
+  margin-bottom: 30px;
+  text-decoration: underline;
+}
+.reg{
+  margin-top: 20px;
+  text-decoration: underline;
+  font-size: 25px;
+}
+.notreg{
+  margin-top: 20px;
+ 
+  font-size: 25px;
+}
+@media (max-width: 768px) {
+  .user {
+    width: 100%; /* Display single user in mobile */
+  }
 }
